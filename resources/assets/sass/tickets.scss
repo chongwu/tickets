@@ -1,0 +1,117 @@
+$max-deep: 50;
+$max-margin: 5;
+
+@mixin loop-margin-type($max, $type) {
+  @for $i from 1 through $max {
+    .margin-#{$type}-#{$i*10} {
+      margin-#{$type}: $i*10px;
+    }
+  }
+}
+
+@include loop-margin-type($max-margin, 'top');
+@include loop-margin-type($max-margin, 'bottom');
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+  background-color: #dddddd;
+}
+
+.equipment-types{
+  margin-top: 10px;
+  .col{
+    @for $i from 0 through $max-deep {
+      &.left-#{$i}{
+        margin-left: percentage(($i / $max-deep));
+      }
+    }
+  }
+}
+.block-header {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 22px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.label {
+  font-size: 80%;
+}
+.tickets {
+  span.comments-count {
+    font-style: italic;
+    font-size: 1.4rem;
+    padding-left: 3px;
+    color: #808080;
+  }
+}
+.ticket-comments {
+  .comment {
+    padding: 10px 0 10px 0;
+    margin: 0;
+  }
+  .comment-info {
+    font-size: 1.9rem;
+  }
+  .comment-text {
+    margin-bottom: 5px;
+  }
+}
+.change-ticket{
+  border-bottom: 1px dashed #636b6f;
+  cursor: pointer;
+}
+label.hover-label{
+  cursor: pointer;
+}
+td.buttons{
+  text-align: center;
+  width: 70px;
+  vertical-align: middle!important;
+}
+.breadcrumb{
+  padding: 8px 0px;
+  margin-bottom: -10px;
+  background-color: transparent;
+}
+.list-group-item{
+  &:first-child{
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  &:last-child{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+.display-inline{
+  display: inline-block;
+}
+.display-none{
+  display: none;
+}
+form.change-ticket-complete-date-form{
+  input.ticket-new-date{
+    height: 24px;
+    float: left;
+    margin-right: 5px;
+    width: 60%;
+  }
+}
+form.change-ticket-employee-form{
+  select.new-employee-select{
+    float: left;
+    width: 82%;
+    height: 30px;
+    margin-right: 5px;
+  }
+}
+form.equipment-edit-name{
+  input.edit-name{
+    @extend .display-inline;
+    width: 75%;
+    height: 23px;
+  }
+}
